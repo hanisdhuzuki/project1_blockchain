@@ -5,14 +5,23 @@ contract Charity {
     address public owner;
     uint public threshold = 10 ether;
     uint public balance = 0;
+
+    struct Donatee {
+        uint last4digit;
+        address donateeAddress;
+    }
+    
     mapping(address => bool) public isDonor;
     mapping(address => bool) public isAlerted;
+    mapping(address => bool) public isThisAddressRegistered;
+    mapping(uint => Donatee) private donatees;
+    address[] private walletAddressDonatee;
 
     event LogTransaction(address indexed sender, address indexed recipient, uint amount);
     event Alert(address indexed account, uint amount, string alertType);
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "Only the owner can call this function.");
+        require(0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db == owner, "Only the owner can call this function.");
         _;
     }
 
@@ -25,9 +34,21 @@ contract Charity {
         threshold = newThreshold;
     }
 
+    function registerAsDonatee(address _donateeAddress, uint _last4digit) public {
+        require(!isThisAddressRegistered[_donateeAddress], "You have been registered");
+
+        isThisAddressRegistered[msg.sender] = true;
+        donatees[_last4digit] = Donatee(_last4digit, _donateeAddress);
+        walletAddressDonatee.push(_donateeAddress);
+        /**donatees.push(Donatee({
+            donateeAddress: msg.sender,
+            donateeName: donateeName
+        }));*/
+    }
+
     function donate(uint amount) public payable {
         require(amount > 0, "Donation amount must be greater than zero.");
-        require(msg.value == amount, "Please send the exact donation amount.");
+        //require(msg.value == amount, "Please send the exact donation amount.");
 
         balance += amount;
         isDonor[msg.sender] = true;
@@ -36,7 +57,7 @@ contract Charity {
             emit Alert(msg.sender, amount, "HugeTransaction");
         }
 
-        if (address(this).balance > 50 ether && !isAlerted[msg.sender]) {
+        if (balance > 50 ether) {
             emit Alert(msg.sender, balance, "MoneyLaundering");
             isAlerted[msg.sender] = true;
         }
@@ -52,7 +73,7 @@ contract Charity {
         payable(msg.sender).transfer(amount);
         emit LogTransaction(msg.sender, address(0), amount);
 
-        if (address(this).balance > 50 ether && !isAlerted[msg.sender]) {
+        if (balance > 50 ether) {
             emit Alert(msg.sender, balance, "MoneyLaundering");
             isAlerted[msg.sender] = true;
         }
@@ -68,5 +89,11 @@ contract Charity {
 
     function getOwner() public view returns (address) {
         return owner;
+    }
+
+    //fx to list all need donate
+    function list() public view returns (address[] memory) {
+        //return the array of the wallet address
+        return walletAddressDonatee;
     }
 }
