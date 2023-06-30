@@ -12,7 +12,9 @@
     <title>Good Charity</title>
   </head>
   <body>
-    <h2>TrustGood Charity</h2>
+    <div class="col-4">
+      <h2>TrustGood Charity</h2>
+    </div>
 
 <!-- Admin -->
     <div class="mainContent">
@@ -51,13 +53,13 @@
         <div class="card-header"><b>Donater Functions</b></div>
         <div class="card-body">
           <div class="col-4"><u>Register as Donater</u></div>
-          <form class="row-3">
+          <form class="row-3" id="donatorRegistration">
 
             <div class="col-4">
               <label>Wallet Address:</label>
               <input
                 type="text"
-                class="form-control addressToRegister"
+                class="form-control" id="addressToRegister"
                 aria-describedby="inputGroupPrepend2"
                 required
               />
@@ -67,7 +69,7 @@
               <label>Last four digit of IC number:</label>
               <input
                 type="text"
-                class="form-control numberToRegister"
+                class="form-control" id="numberToRegister"
                 aria-describedby="inputGroupPrepend2"
                 minlength="4"
                 maxlength="4"
@@ -113,18 +115,18 @@
         </div>
       </div>
 
-<!-- Donatee -->
+      <!-- Donatee -->
       <div class="card">
         <div class="card-header"><b>Needy People Functions</b></div>
         <div class="card-body">
           <div class="col-4"><u>Register as Donatee</u></div>
-          <form class="row-3">
+          <form class="row-3" id="donateeRegistration">
 
             <div class="col-4">
               <label>Wallet Address:</label>
               <input
                 type="text"
-                class="form-control addressToRegister"
+                class="form-control" id="addressToRegister"
                 aria-describedby="inputGroupPrepend2"
                 required
               />
@@ -134,7 +136,7 @@
               <label>Last four digit of IC number:</label>
               <input
                 type="text"
-                class="form-control numberToRegister"
+                class="form-control" id="numberToRegister"
                 aria-describedby="inputGroupPrepend2"
                 minlength="4"
                 maxlength="4"
@@ -146,7 +148,7 @@
               <label>Full Name:</label>
               <input
                 type="text"
-                class="form-control fullNameToRegister"
+                class="form-control" id="fullNameToRegister"
                 aria-describedby="inputGroupPrepend2"
                 required
               />
@@ -192,15 +194,57 @@
 
 <!-- Display information -->
       <div class="card">
-        <div class="card-header">Needy People Information</div>
+        <div class="card-header"><b>Display Information</b></div>
         <div class="card-body">
+          <!-- View Threshold -->
+          <div class="col-4"><u>View Threshold</u></div>
+          <form class="row-3">
 
-          <div class="col-4">
-            <button type="submit" class="btn displayInfo">
-              Display
-            </button>
-          </div>
+            <div class="col-4">
+              <label>Threshold:</label>
+              <div class="col numberOfThreshold"></div>
+            </div>
 
+            <div class="col-4">
+              <button
+                type="submit"
+                class="btn displayThreshold"
+              >
+                View
+              </button>
+            </div>
+          </form>
+          <br>
+
+          <!-- View Balance-->
+          <div class="col-4"><u>View Fund Balance</u></div>
+          <form class="row-3">
+
+            <div class="col-4">
+              <label>Balance:</label>
+              <div class="col balanceOfFunds"></div>
+            </div>
+
+            <div class="col-4">
+              <button
+                type="submit"
+                class="btn displaybalanceOfFunds"
+              >
+                Balance
+              </button>
+            </div>
+          </form>
+          <br>
+
+          <!-- View Needy People Info-->
+          <div class="col-4"><u>View Needy People Information</u></div>
+          <form class="row-3">
+            <div class="col_4">
+              <button type="submit" class="btn displayInfo">
+                Display
+              </button>
+            </div>
+          </form>
         </div>
       </div>
 
@@ -212,7 +256,7 @@
       type="application/javascript"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
-    <script src="contractAddressAndAbi.js"></script>
-    <script src="project_cripts.js"></script>
+    <script src="project_abi.js"></script>
+    <script src="project_scripts.js"></script>
   </body>
 </html>
