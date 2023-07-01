@@ -28,9 +28,9 @@ donateeRegistration.addEventListener('submit', async (event) => {
 
     if (web3.utils.isAddress(addressToRegister) == true) {
       // Call the smart contract function to store the multiple data entries
-      contract.methods.registerAsDonor(addressToRegister, numberToRegister).send();
+      contract.methods.registerAsDonatee(addressToRegister, numberToRegister, fullNameToRegister).send();
 
-      alert('Data stored successfully!');
+      window.alert('Data stored successfully!');
       addressToRegister= ''; // Clear the input fields
       numberToRegister= '';
     } else {
@@ -51,7 +51,7 @@ donatorRegistration.addEventListener('submit', async (event) => {
       // Call the smart contract function to store the multiple data entries
       contract.methods.registerAsDonor(addressToRegister, numberToRegister).send();
 
-      alert('Data stored successfully!');
+      window.alert('Data stored successfully!');
       addressToRegister= ''; // Clear the input fields
       numberToRegister= '';
     } else {
@@ -68,7 +68,7 @@ function donate(amount, addressDonator) {
       from: addressDonator,
       value: amount,
     });
-    console.log('Donation successful:', result);
+    window.alert('Donation successful:', result);
   } catch (error) {
     console.error('Failed to make a donation:', error);
   }
@@ -81,7 +81,7 @@ function withdraw(amount, addressDonatee) {
       from: '0x5601b6b8799023e6c5A7753D2D6Eb883089e6Ab9', // The address of the owner/charitable organization
     });;
 
-    console.log('Withdrawal successful:', result);
+    window.alert('Withdrawal successful:', result);
   } catch (eror) {
     console.error('Failed to withdraw funds:', error);
   }
