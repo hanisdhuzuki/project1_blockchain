@@ -39,7 +39,8 @@
             <div class="col-4">
               <button
                 type="submit"
-                class="btn setThreshold"
+                class="btn"
+                id="setThreshold"
               >
                 set
               </button>
@@ -79,7 +80,7 @@
 
             <div class="col-4">
               <button
-                type="submit" class="btn registerAsDonater">
+                type="submit" class="btn" id="registerAsDonater">
                 Register
               </button>
             </div>
@@ -88,11 +89,11 @@
 
           <!-- Donate -->
           <div class="col-4"><u>Do Donation</u></div>
-          <form class="row-3">
+          <form class="row-3" id="donateFund">
 
             <div class="col-4">
               <label>Amount (in Ether):</label>
-              <input type="number" class="form-control donationAmount">
+              <input type="number" class="form-control" id="donationAmount">
             </div>
 
             <div class="col-4">
@@ -100,14 +101,14 @@
               <input
                 type="text"
                 class="form-control addressDonor"
-                id="validationDefaultUsername"
+                id="addressDonor"
                 aria-describedby="inputGroupPrepend2"
                 required
               />
             </div>
 
             <div class="col-4">
-              <button type="submit" class="btn donate">
+              <button type="submit" class="btn">
                 Donate
               </button>
             </div>
@@ -156,7 +157,7 @@
 
             <div class="col-4">
               <button
-                type="submit" class="btn registerAsDonatee">
+                type="submit" class="btn" id="registerAsDonatee">
                 Register
               </button>
             </div>
@@ -165,25 +166,26 @@
 
           <!-- Withdraw -->
           <div class="col-4"><u>Withdraw Money</u></div>
-          <form class="row-3">
+          <form class="row-3" id="withdrawFund">
 
             <div class="col-4">
               <label>Amount:</label>
-              <input type="number" class="form-control withdrawalAmount">
+              <input type="number" class="form-control" id="withdrawalAmount">
             </div>
 
             <div class="col-4">
               <label>Donatee Wallet Address:</label>
               <input
                 type="text"
-                class="form-control addressDonatee"
+                class="form-control"
+                id="addressDonatee"
                 aria-describedby="inputGroupPrepend2"
                 required
               />
             </div>
 
             <div class="col-4">
-              <button type="submit" class="btn withdraw">
+              <button type="submit" class="btn">
                 Withdraw
               </button>
             </div>
@@ -196,39 +198,20 @@
       <div class="card">
         <div class="card-header"><b>Display Information</b></div>
         <div class="card-body">
-          <!-- View Threshold -->
-          <div class="col-4"><u>View Threshold</u></div>
-          <form class="row-3">
-
-            <div class="col-4">
-              <label>Threshold:</label>
-              <div class="col numberOfThreshold"></div>
-            </div>
-
-            <div class="col-4">
-              <button
-                type="submit"
-                class="btn displayThreshold"
-              >
-                View
-              </button>
-            </div>
-          </form>
-          <br>
-
           <!-- View Balance-->
           <div class="col-4"><u>View Fund Balance</u></div>
           <form class="row-3">
 
             <div class="col-4">
               <label>Balance:</label>
-              <div class="col balanceOfFunds"></div>
+              <div class="col" id="balanceOfFunds"></div>
             </div>
 
             <div class="col-4">
               <button
                 type="submit"
                 class="btn displaybalanceOfFunds"
+                onclick="getBalance()"
               >
                 Balance
               </button>
@@ -239,8 +222,12 @@
           <!-- View Needy People Info-->
           <div class="col-4"><u>View Needy People Information</u></div>
           <form class="row-3">
-            <div class="col_4">
-              <button type="submit" class="btn displayInfo">
+            <div class="row">
+              <div class="col"> <u>Full Name needy people</u> </div>
+              <div class="col" id="fullNameDonatee"></div>
+            </div>
+            <div class="col-4">
+              <button type="submit" class="btn displayInfo" onclick="displayInfo()">
                 Display
               </button>
             </div>
