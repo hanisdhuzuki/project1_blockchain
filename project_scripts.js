@@ -97,7 +97,7 @@ function getBalance() {
 // Fetch and display the list of donatees
 function displayInfo() {
   const fullNameDonatees = document.getElementById('fullNameDonatees');
-  const dispInfo = await contract.methods.list().call();
+  const dispInfo = contract.methods.list();
   dispInfo.forEach(fullNameDonatee => {
       fullNameDonatees.innerHTML += `<p>${fullNameDonatee}</p>`;
   });
