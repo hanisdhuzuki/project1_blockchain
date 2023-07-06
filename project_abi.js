@@ -1,4 +1,4 @@
-const contractAddress = "0xdB9A8c8278016AA1Ea40f1E6Ad3b3fcC5226EaEB"; // the address when deploy the contract
+
 //abi can get when has compile the contract
 const abi = [
 	{
