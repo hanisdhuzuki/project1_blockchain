@@ -4,6 +4,7 @@ let provider = ethers.getDefaultProvider(network, {
   infura: "", // Infura API KEY ---- keep it secret
 });
 
+const contractAddress = "0xdB9A8c8278016AA1Ea40f1E6Ad3b3fcC5226EaEB"; // the address when deploy the contract
 // Set the contract object with the provider
 contract = new ethers.Contract(contractAddress, abi, provider);
 
