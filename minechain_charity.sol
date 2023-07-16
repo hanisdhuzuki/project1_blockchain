@@ -22,7 +22,7 @@ contract Charity {
     mapping(address => bool) public isThisAddressRegistered;
     mapping(uint => Donatee) private donatees;
     mapping(uint => Donator) private donators;
-    address[] private fullNameDonatee;
+    string[] private fullNameDonatee;
 
     event LogTransaction(address indexed sender, address indexed recipient, uint amount);
     event Alert(address indexed account, uint amount, string alertType);
@@ -46,7 +46,7 @@ contract Charity {
 
         isThisAddressRegistered[_donateeAddress] = true;
         donatees[_last4digitDonatee] = Donatee(_donateeAddress, _last4digitDonatee, _fullName);
-        walletAddressDonatee.push(_fullName);
+        fullNameDonatee.push(_fullName);
     }
 
     function registerAsDonor(address _donatorAddress, uint _last4digitDonator) public {
