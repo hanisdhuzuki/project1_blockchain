@@ -6,8 +6,8 @@ import Web3 from 'web3';
 //});
 const Web3 = require('web3');
 // Connect to the local Ethereum node
-const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
-const contractABI = require('project_abi.json');
+const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+const contractABI = require('./project_abi.js');
 const contractAddress = "";
 
 // Set the contract object with the provider
