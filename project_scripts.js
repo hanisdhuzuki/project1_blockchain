@@ -1,13 +1,16 @@
+import Web3 from 'web3';
 // Set the provider with Infura API Key
 const network = "sepolia";
 let provider = ethers.getDefaultProvider(network, {
   infura: "", // Infura API KEY ---- keep it secret
 });
+const Web3 = require('web3');
+// Connect to the local Ethereum node
+const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
+const contractABI = require('project_abi.json');
 
-const contractAddress = "0xdB9A8c8278016AA1Ea40f1E6Ad3b3fcC5226EaEB"; // the address when deploy the contract
 // Set the contract object with the provider
-contract = new ethers.Contract(contractAddress, abi, provider);
-
+contract = new web3.ethers.Contract(contractAddress, contractABI);
 // Set threshold Button Handler
 const setThreshold = document.getElementById('setThreshold');
 setThreshold.addEventListener('submit', async (event) => {
