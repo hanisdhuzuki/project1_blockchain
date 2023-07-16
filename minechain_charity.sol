@@ -98,7 +98,7 @@ contract Charity {
     }
 
     //fx to list all need donate
-    function list() public view returns (address[] memory) {
+    function list() public view returns (string[] memory) {
         //return the array of the wallet address
         return fullNameDonatee;
     }
