@@ -1,4 +1,3 @@
-
 //abi can get when has compile the contract
 const abi = [
 	{
